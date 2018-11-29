@@ -67,6 +67,9 @@
             </tr>
         </c:forEach>
     </table>
+        <c:if test="${myGame.myTurn}">
+            <input type="radio" name="cell">
+        </c:if>
     <button type="submit">FIer</button>
     </form>
 
