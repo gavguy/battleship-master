@@ -1,5 +1,6 @@
 package lv.tsi.battleship.model;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,21 @@ import java.io.IOException;
 
 @WebServlet(name = "GameServlet", urlPatterns = "/game")
 public class GameServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    @Inject
+    private MyGame myGame;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String addr = request.getParameter("addr");
+        if (!myGame.isMyTurn()) {
+            response.sendError(HttpServletResponse.SC_BAD_GATEWAY);
+            return;
+        }
+        myGame.getGame().fire(addr);
+        if (myGame.getGame().isFinished()) {
+            response.sendRedirect("/battleship/result");
+        }
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

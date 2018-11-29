@@ -3,6 +3,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+<c:if test="${not myGame.myTurn}">
+      <meta http-equiv="refresh" content="1">
+</c:if>
     <title>game</title>
     <style>
         td.EMPTY {
@@ -20,7 +23,7 @@
     </style>
 </head>
 <body>
-    <form method="post" action="shipplacement">
+    <form method="post" action="game">
     <table>
         <tr>
             <td>&nbsp;</td>
@@ -35,7 +38,7 @@
                     <c:set var="addr" value="${col}${row}"/>
                     <td class="${myGame.user.enemyField.getState(addr)}">
                         <c:if test="${myGame.myTurn}">
-                            <input type="radio" name="cell">
+                            <input type="radio" name="cell" value="${addr}">
                         </c:if>
                       &nbsp;
 
@@ -68,9 +71,9 @@
         </c:forEach>
     </table>
         <c:if test="${myGame.myTurn}">
-            <input type="radio" name="cell">
+            <button type="submit">FIer</button>
         </c:if>
-    <button type="submit">FIer</button>
+
     </form>
 
 

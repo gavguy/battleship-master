@@ -5,6 +5,7 @@ public class User {
     private Field myField = new Field();
     private Field enemyField = new Field();
     private boolean ready = false;
+    private boolean winner = false;
 
     public String getName() {
         return name;
@@ -28,5 +29,12 @@ public class User {
 
     public void setReady(boolean ready) {
         this.ready = ready;
+    }
+
+    public void setWinner(boolean b) {
+    }
+
+    public boolean isWinner() {
+        return winner;
     }
 }
