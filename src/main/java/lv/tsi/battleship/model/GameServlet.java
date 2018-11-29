@@ -15,7 +15,7 @@ public class GameServlet extends HttpServlet {
     private MyGame myGame;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String addr = request.getParameter("addr");
+        String addr = request.getParameter("cell");
         if (!myGame.isMyTurn()) {
             response.sendError(HttpServletResponse.SC_BAD_GATEWAY);
             return;

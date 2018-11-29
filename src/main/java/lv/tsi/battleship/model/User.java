@@ -31,10 +31,11 @@ public class User {
         this.ready = ready;
     }
 
-    public void setWinner(boolean b) {
-    }
-
     public boolean isWinner() {
         return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
     }
 }
